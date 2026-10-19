@@ -1,0 +1,238 @@
+.intro-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #faf9f6;
+  color: #202124;
+  opacity: 1;
+  visibility: visible;
+  transition:
+    opacity 650ms cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 650ms;
+}
+
+.intro-splash::before {
+  content: "";
+  position: absolute;
+  width: min(70vw, 540px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(66, 133, 244, 0.065),
+    rgba(52, 168, 83, 0.025) 42%,
+    transparent 70%
+  );
+  animation: intro-aura 2.8s ease-in-out infinite alternate;
+}
+
+.intro-splash__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding: 24px;
+  text-align: center;
+  animation: intro-arrive 1000ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-splash__mark {
+  width: clamp(112px, 17vw, 168px);
+  transform-origin: center;
+  animation: intro-logo-settle 1200ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+
+.intro-splash__logo {
+  display: block;
+  width: 240px;
+  max-width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  margin-inline: auto;
+  transform: scale(1.40);
+  transform-origin: center;
+}
+
+.intro-splash__wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.intro-splash__name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(42px, 7vw, 70px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 0.95;
+  white-space: nowrap;
+  animation: intro-name-reveal 850ms 250ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.intro-splash__name em {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.intro-splash__rule {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    #4285f4,
+    #34a853,
+    #fbbc04,
+    #ea4335
+  );
+  animation: intro-rule-reveal 650ms 650ms ease-out forwards;
+}
+
+.intro-splash__caption {
+  font-family: "Manrope", sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  opacity: 0;
+  animation: intro-caption-reveal 600ms 700ms ease-out forwards;
+}
+
+.intro-splash--leaving {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-splash--leaving .intro-splash__content {
+  transform: translateY(-10px) scale(0.985);
+  opacity: 0;
+  transition:
+    opacity 400ms ease,
+    transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Support common dark-theme conventions. */
+:root[data-theme="dark"] .intro-splash,
+.dark .intro-splash {
+  background: #101114;
+  color: #f5f3ee;
+}
+
+:root[data-theme="dark"] .intro-splash::before,
+.dark .intro-splash::before {
+  background: radial-gradient(
+    circle,
+    rgba(66, 133, 244, 0.13),
+    rgba(52, 168, 83, 0.045) 42%,
+    transparent 70%
+  );
+}
+
+:root[data-theme="dark"] .intro-splash__logo,
+.dark .intro-splash__logo {
+  filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes intro-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-logo-settle {
+  0% {
+    opacity: 0;
+    transform: scale(0.78) rotate(-5deg);
+  }
+  65% {
+    opacity: 1;
+    transform: scale(1.035) rotate(1deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes intro-name-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    letter-spacing: 0.01em;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -0.055em;
+  }
+}
+
+@keyframes intro-rule-reveal {
+  from {
+    width: 0;
+  }
+  to {
+    width: 74%;
+  }
+}
+
+@keyframes intro-caption-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 0.58;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-aura {
+  from {
+    transform: scale(0.92);
+    opacity: 0.65;
+  }
+  to {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-splash__content {
+    gap: 20px;
+  }
+
+  .intro-splash__caption {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-splash *,
+  .intro-splash::before {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+  }
+
+  .intro-splash,
+  .intro-splash--leaving .intro-splash__content {
+    transition-duration: 150ms;
+  }
+}
+
+
+:root[data-theme="dark"] .intro-splash__logo {
+  mix-blend-mode: normal;
+}

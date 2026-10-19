@@ -1,0 +1,137 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --google-blue: #4285f4;
+  --google-red: #ea4335;
+  --google-yellow: #fbbc04;
+  --google-green: #34a853;
+
+  --bg: #f8f9fc;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --text: #202124;
+  --muted: #646a73;
+  --subtle: #8b9099;
+  --border: #e6e8ed;
+  --border-strong: #d6dae2;
+  --accent-soft: rgba(66, 133, 244, 0.09);
+  --hero-glow: rgba(66, 133, 244, 0.12);
+  --shadow-card: 0 18px 55px rgba(29, 41, 57, 0.07);
+  --header-bg: rgba(248, 249, 252, 0.82);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --google-blue: #8ab4f8;
+  --google-red: #f28b82;
+  --google-yellow: #fdd663;
+  --google-green: #81c995;
+
+  --bg: #101216;
+  --surface: #171a20;
+  --surface-raised: #1d2129;
+  --text: #f1f3f4;
+  --muted: #b3b8c2;
+  --subtle: #858c98;
+  --border: #2b3039;
+  --border-strong: #414752;
+  --accent-soft: rgba(138, 180, 248, 0.11);
+  --hero-glow: rgba(138, 180, 248, 0.12);
+  --shadow-card: 0 18px 55px rgba(0, 0, 0, 0.22);
+  --header-bg: rgba(16, 18, 22, 0.84);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  transition: background-color 250ms ease, color 250ms ease;
+}
+
+body,
+button,
+a,
+input,
+textarea,
+select {
+  font-family: 'Inter', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.hero-title-accent,
+.serif-accent {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+}
+
+.hero-title-accent,
+.serif-accent {
+  font-style: normal;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--google-blue);
+  outline-offset: 5px;
+}
+
+::selection {
+  background: var(--google-blue);
+  color: #ffffff;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
