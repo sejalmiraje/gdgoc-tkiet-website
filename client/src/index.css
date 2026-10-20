@@ -1,8 +1,7 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@400;500;600;700;1,400;1,500&display=swap');
 :root {
-  font-family: 'Inter', sans-serif;
+  font-family: 'DM Sans', sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -64,36 +63,16 @@ body {
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  transition: background-color 250ms ease, color 250ms ease;
+  font-family: 'Manrope', sans-serif;
+  transition:
+    background-color 250ms ease,
+    color 250ms ease;
 }
 
 body,
 button,
-a,
-input,
-textarea,
-select {
-  font-family: 'Inter', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.hero-title-accent,
-.serif-accent {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.035em;
-}
-
-.hero-title-accent,
-.serif-accent {
-  font-style: normal;
+a {
+  font-family: 'DM Sans', sans-serif;
 }
 
 button,
@@ -134,4 +113,26 @@ a:focus-visible {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Premium editorial typography */
+h1,
+h2,
+h3,
+.hero-title-accent,
+.serif-accent {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+}
+
+.hero-title-accent,
+.serif-accent {
+  font-style: italic;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: 'Manrope', sans-serif;
 }

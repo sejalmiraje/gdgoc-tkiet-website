@@ -3,9 +3,13 @@ import IntroSplash from './IntroSplash.jsx';
 import { useEffect, useState } from 'react';
 import {
   Link,
+  Routes,
+  Route,
 } from 'react-router-dom';
+import Events from './pages/events.jsx'; 
 import { motion } from 'motion/react';
 import './App.css';
+
 
 const navigation = [
   { label: 'Home', href: '/', color: 'blue' },
@@ -246,7 +250,7 @@ function App() {
 
   return (
     <div className="site-shell">
-      <IntroSplash /> 
+      {window.location.pathname === '/' && <IntroSplash />}
       <header className="site-header">
         <div className="nav-inner">
           <ChapterLogo />
@@ -277,7 +281,8 @@ function App() {
         </div>
       </header>
 
-      <main>
+      <Routes>
+        <Route path="/" element={<main>
         <section className="hero section-container" id="home">
           <div className="hero-copy">
             <motion.div
@@ -322,10 +327,10 @@ function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.27 }}
             >
-              <a className="button button-primary" href="#events">
-                Explore events
-                <ArrowIcon />
-              </a>
+              <Link className="button button-primary" to="/events">
+  Ongoing Events
+  <ArrowIcon />
+</Link>
               <Link className="button button-secondary" to="/about">
                Discover our community
               </Link>
@@ -390,7 +395,7 @@ function App() {
                   Explore modern tools, ideas, and technologies through
                   hands-on learning and community sessions.
                 </p>
-                <span className="event-status">EVENTS COMING SOON</span>
+                <span className="event-status">EVENTS</span>
               </div>
             </article>
 
@@ -409,7 +414,7 @@ function App() {
                   Put concepts into practice, experiment with code, and
                   create alongside fellow student developers.
                 </p>
-                <span className="event-status">EVENTS COMING SOON</span>
+                <span className="event-status">HACKATHONS</span>
               </div>
             </article>
 
@@ -432,7 +437,7 @@ function App() {
                   Share perspectives, meet people with similar interests,
                   and make your learning journey collaborative.
                 </p>
-                <span className="event-status">EVENTS COMING SOON</span>
+                <span className="event-status">WORKSHOPS</span>
               </div>
             </article>
           </div>
@@ -569,7 +574,10 @@ function App() {
 </section>
 
            
-      </main>
+              </main>} />
+
+        <Route path="/events" element={<Events />} />
+      </Routes>
 
       <footer className="site-footer">
         <div className="section-container footer-inner">

@@ -1,8 +1,7 @@
+
 import ChapterMark from './ChapterMark.jsx';
 import { useEffect, useState } from 'react';
 import './IntroSplash.css';
-
-
 
 export default function IntroSplash() {
   const [leaving, setLeaving] = useState(false);
@@ -11,11 +10,11 @@ export default function IntroSplash() {
   useEffect(() => {
     const exitTimer = window.setTimeout(() => {
       setLeaving(true);
-    }, 3000);
+    }, 1800);
 
     const removeTimer = window.setTimeout(() => {
       setHidden(true);
-    }, 3000);
+    }, 2000);
 
     return () => {
       window.clearTimeout(exitTimer);
