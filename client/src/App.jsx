@@ -255,17 +255,19 @@ function App() {
         <div className="nav-inner">
           <ChapterLogo />
 
-          <nav className="nav-links" aria-label="Main navigation">
-            {navigation.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className={`nav-link nav-${item.color}`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          
+<nav className="nav-links" aria-label="Main navigation">
+  {navigation.map((item) => (
+    <Link
+      key={item.label}
+      to={item.href}
+      className={`nav-link nav-${item.color}`}
+    >
+      {item.label}
+    </Link>
+  ))}
+</nav>
+
 
           <div className="nav-actions">
             <button
