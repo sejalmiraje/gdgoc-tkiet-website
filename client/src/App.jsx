@@ -7,6 +7,8 @@ import {
   Route,
 } from 'react-router-dom';
 import Events from './pages/events.jsx'; 
+import About from "./pages/about.jsx";
+import Team from './pages/team.jsx';
 import { motion } from 'motion/react';
 import './App.css';
 
@@ -578,8 +580,12 @@ function App() {
            
               </main>} />
 
+        
+        <Route path="/about" element={<About />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/team" element={<Team />} />
       </Routes>
+
 
       <footer className="site-footer">
         <div className="section-container footer-inner">
@@ -587,7 +593,9 @@ function App() {
           <p>Built for curious minds at TKIET.</p>
           <a
             className="footer-link"
-            href="https://gdg.community.dev/"
+            
+href="https://gdg.community.dev/gdg-on-campus-tatyasaheb-kore-institute-of-engineering-technology-kolhapur-india/"
+
             target="_blank"
             rel="noreferrer"
           >

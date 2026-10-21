@@ -1,10 +1,9 @@
-
 import { useState } from "react";
 import "./team.css";
 
 const organizers = [
-  { name: "Sanika Jadhav", role: "Organizer", initials: "SJ" },
   { name: "Rushikesh Babar", role: "Organizer", initials: "RB" },
+  { name: "Sanika Jadhav", role: "Organizer", initials: "SJ" },
   { name: "Asmita Gayakwad", role: "Organizer", initials: "AG" },
 ];
 
@@ -16,15 +15,15 @@ const wings = [
     icon: "</>",
     color: "blue",
     leads: [
-      ["Technical Lead", "TL"],
-      ["AI/ML Lead", "AI"],
-      ["Cloud & DevOps Lead", "CD"],
-      ["Cybersecurity Lead", "CS"],
-      ["CP & DSA Lead", "CP"],
-      ["Web Development Lead", "WD"],
-      ["App Development Lead", "AD"],
-      ["Open Source Lead", "OS"],
-      ["Developer Relations Lead", "DR"],
+      ["Technical Lead", "Somnath Desai", "SD"],
+      ["AI/ML Lead", "Ganesh Sable", "GS"],
+      ["Cloud & DevOps Lead", "Prathamesh Lahate", "PL"],
+      ["Cybersecurity Lead", "Aditi Patil", "AP"],
+      ["CP & DSA Lead", "Sanskar Wadkar", "SW"],
+      ["Web Development Lead", "Sejal Miraje", "SM"],
+      ["App Development Lead", "Gayatri Sutar", "GS"],
+      ["Open Source Lead", "Aditya Desai", "AD"],
+      ["Developer Relations Lead", "Poonam Sutar", "PS"],
     ],
   },
   {
@@ -34,8 +33,8 @@ const wings = [
     icon: "↗",
     color: "red",
     leads: [
-      ["Marketing Lead", "MK"],
-      ["Outreach Lead", "OR"],
+      ["Marketing Lead", "Harshal More", "HM"],
+      ["Outreach Lead", "Abhijeet Koli", "AK"],
     ],
   },
   {
@@ -44,7 +43,9 @@ const wings = [
     description: "Building sustainable partnerships and opportunities.",
     icon: "◇",
     color: "green",
-    leads: [["Finance & Strategic Partnerships Lead", "FP"]],
+    leads: [
+      ["Finance & Strategic Partnerships Lead", "Parth Mali", "PM"],
+    ],
   },
   {
     number: "04",
@@ -53,9 +54,9 @@ const wings = [
     icon: "✳",
     color: "yellow",
     leads: [
-      ["Graphics Design Lead", "GD"],
-      ["Documentation Lead", "DC"],
-      ["Media & Digital Communications Lead", "MD"],
+      ["Graphics Design Lead", "Rujula Yogesh Shelar", "RS"],
+      ["Documentation Lead", "Prasad Chougule", "PC"],
+      ["Media & Digital Communications Lead", "Aditya Sutar", "AS"],
     ],
   },
   {
@@ -65,23 +66,57 @@ const wings = [
     icon: "⌘",
     color: "purple",
     leads: [
-      ["Community Manager", "CM"],
-      ["Event Management Lead", "EM"],
-      ["Anchoring & Hosting Lead", "AH"],
+      ["Community Manager", "Shree Chavan", "SC"],
+      ["Event Management Lead", "Suhani Kumbar", "SK"],
+      ["Anchoring & Hosting Lead", "Siddhi Panhalkar", "SP"],
     ],
   },
 ];
 
 const executiveLead = {
-  name: "Name to be added",
+  name: "Janvi Tonpe",
   role: "Executive Core Members Lead",
-  initials: "EC",
+  initials: "JT",
 };
 
-const members = Array.from({ length: 28 }, (_, index) => ({
+const members = [
+  "Anushka Mohite",
+  "Sonali Shriram",
+  "Prachi Patil",
+  "Amruta Thorat",
+  "Nikhil Chendage",
+  "Swaranjali Hatrote",
+  "Pranali Magdum",
+  "Sneha Patil",
+  "Atharv Patil",
+  "Kalpesh Aswale",
+  "Shravan Mane Patil",
+  "Shivaji Gaware",
+  "Ayush Birajdar",
+  "Harshad Sawant",
+  "Ayan Shaikh",
+  "Diksha Sid",
+  "Sanchita Chingade",
+  "Muskan Mulani",
+  "Tanmay Shinde",
+  "Shravani Patil",
+  "Snehal Kumbhar",
+  "Asmita Patil",
+  "Palakkumari Pandey",
+  "Prithviraj Shingate",
+  "Pranjali Chougule",
+  "Ankita Patil",
+  "Sushant Mane",
+  "Kaivalya Thanekar",
+].map((name, index) => ({
   id: index + 1,
-  name: `Member ${String(index + 1).padStart(2, "0")}`,
-  initials: String(index + 1).padStart(2, "0"),
+  name,
+  initials: name
+    .split(" ")
+    .map((part) => part[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase(),
 }));
 
 function InitialAvatar({ initials, large = false }) {
@@ -104,9 +139,7 @@ function OrganizerCard({ person, index }) {
       style={{ "--profile-index": index }}
     >
       <div className="organizer-card-top">
-        <span className="profile-index">
-          ORGANIZER / 0{index + 1}
-        </span>
+        <span className="profile-index">ORGANIZER / 0{index + 1}</span>
         <span className="profile-spark" aria-hidden="true">
           ✳
         </span>
@@ -117,15 +150,13 @@ function OrganizerCard({ person, index }) {
       <div className="organizer-info">
         <span className="profile-role">{person.role}</span>
         <h3>{person.name}</h3>
-        <span className="profile-placeholder-note">
-          Photo coming soon
-        </span>
+        <span className="profile-placeholder-note">Photo coming soon</span>
       </div>
     </article>
   );
 }
 
-function WingLeadCard({ role, initials, index }) {
+function WingLeadCard({ role, name, initials, index }) {
   return (
     <article
       className="wing-lead-card"
@@ -134,7 +165,7 @@ function WingLeadCard({ role, initials, index }) {
       <InitialAvatar initials={initials} />
 
       <div className="wing-lead-info">
-        <span className="wing-lead-name">Name to be added</span>
+        <span className="wing-lead-name">{name}</span>
         <span className="wing-lead-role">{role}</span>
       </div>
 
@@ -163,10 +194,11 @@ function WingPanel({ wing }) {
       </div>
 
       <div className="wing-leads">
-        {wing.leads.map(([role, initials], index) => (
+        {wing.leads.map(([role, name, initials], index) => (
           <WingLeadCard
             key={role}
             role={role}
+            name={name}
             initials={initials}
             index={index}
           />
@@ -198,9 +230,7 @@ function ExecutiveLeadCard() {
         <div>
           <span className="profile-role">{executiveLead.role}</span>
           <h4>{executiveLead.name}</h4>
-          <span className="profile-placeholder-note">
-            Photo and name to be added
-          </span>
+          <span className="profile-placeholder-note">Photo coming soon</span>
         </div>
       </div>
     </article>
@@ -218,6 +248,7 @@ export default function Team() {
     <main className="team-page">
       <section className="team-intro">
         <div className="team-intro-grid" aria-hidden="true" />
+
         <div className="team-intro-content">
           <span className="team-eyebrow">
             <span className="team-eyebrow-dot" />
@@ -267,9 +298,7 @@ export default function Team() {
             <h2>
               The people who <span>lead.</span>
             </h2>
-            <p>
-              Guiding the vision and bringing our community together.
-            </p>
+            <p>Guiding the vision and bringing our community together.</p>
           </div>
 
           <span className="team-section-count">03 ORGANIZERS</span>
