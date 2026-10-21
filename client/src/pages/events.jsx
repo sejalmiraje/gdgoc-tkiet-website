@@ -1,148 +1,250 @@
-
 import { useEffect, useRef, useState } from "react";
 import "./events.css";
 
-// One open sample, one closed sample, and four empty placeholders.
-const sampleDeadlineOpen = "2026-11-15T23:59:00+05:30";
-const sampleDeadlineClosed = "2026-10-01T23:59:00+05:30";
-
-const placeholder = (id, color) => ({
-  id,
-  title: "-----",
-  category: "-----",
-  description: "-----",
-  fee: "-----",
-  format: "-----",
-  deadline: "",
-  registrationUrl: "",
-  color,
-});
+const sampleDeadline = "2026-11-15T23:59:00+05:30";
 
 const eventItems = [
   {
-    id: "event-1",
-    title: "Demo Event — Registration Open",
-    category: "Demonstration",
-    description: "Sample event to demonstrate open registration and the live deadline countdown.",
+    id: 11,
+    title: "Community Kickoff",
+    category: "",
+    description: "Meet fellow developers and discover the GDGoC community.",
     fee: "Free",
     format: "In-person",
-    deadline: sampleDeadlineOpen,
-    registrationUrl: "",
+    deadline: sampleDeadline,
     color: "blue",
   },
   {
-    id: "event-2",
-    title: "Demo Event — Registration Closed",
-    category: "Demonstration",
-    description: "Sample event to demonstrate automatic registration closure after the deadline.",
+    id: 12,
+    title: "Developer Connect",
+    category: "",
+    description: "Exchange ideas and connect with fellow student developers.",
     fee: "Free",
-    format: "Online",
-    deadline: sampleDeadlineClosed,
-    registrationUrl: "",
+    format: "Hybrid",
+    deadline: sampleDeadline,
     color: "pink",
   },
-  placeholder("event-3", "green"),
-  placeholder("event-4", "yellow"),
-  placeholder("event-5", "purple"),
-  placeholder("event-6", "blue"),
+  {
+    id: 13,
+    title: "Ideas to Impact",
+    category: "",
+    description: "Explore how ideas can become useful projects through teamwork.",
+    fee: "Free",
+    format: "In-person",
+    deadline: sampleDeadline,
+    color: "green",
+  },
+    {
+    id: 14,
+    title: "Tech Talk Series",
+    category: "Technology",
+    description: "Discover emerging technologies and learn from developer discussions.",
+    fee: "Free",
+    format: "Online",
+    deadline: sampleDeadline,
+    color: "yellow",
+  },
+  {
+    id: 15,
+    title: "Community Project Day",
+    category: "Collaboration",
+    description: "Share ideas and collaborate on practical student projects.",
+    fee: "Free",
+    format: "In-person",
+    deadline: sampleDeadline,
+    color: "purple",
+  },
+  {
+    id: 16,
+    title: "Developer Meetup",
+    category: "Networking",
+    description: "Meet fellow developers and exchange your learning experiences.",
+    fee: "Free",
+    format: "Hybrid",
+    deadline: sampleDeadline,
+    color: "pink",
+  },
 ];
 
-const hackathonItems = Array.from({ length: 6 }, (_, i) =>
-  placeholder(`hackathon-${i + 1}`, ["purple", "green", "yellow", "blue", "pink", "green"][i])
-);
+const hackathonItems = [
+  {
+    id: 21,
+    title: "Build for Tomorrow",
+    category: "",
+    description: "Collaborate with a team to prototype a meaningful solution.",
+    fee: "Free",
+    format: "Hybrid",
+    deadline: sampleDeadline,
+    color: "purple",
+  },
+  {
+    id: 22,
+    title: "CodeSprint",
+    category: "",
+    description: "Challenge your thinking and solve coding problems together.",
+    fee: "Paid",
+    format: "In-person",
+    deadline: sampleDeadline,
+    color: "green",
+  },
+  {
+    id: 23,
+    title: "Campus Innovation Lab",
+    category: "",
+    description: "Turn a campus problem into a technology prototype.",
+    fee: "Free",
+    format: "Online",
+    deadline: sampleDeadline,
+    color: "yellow",
+  },
+    {
+    id: 24,
+    title: "Code for Campus",
+    category: "Social Impact",
+    description: "Create technology solutions for everyday campus challenges.",
+    fee: "Free",
+    format: "In-person",
+    deadline: sampleDeadline,
+    color: "blue",
+  },
+  {
+    id: 25,
+    title: "AI Innovation Challenge",
+    category: "Artificial Intelligence",
+    description: "Prototype creative solutions using AI concepts and tools.",
+    fee: "Paid",
+    format: "Online",
+    deadline: sampleDeadline,
+    color: "pink",
+  },
+  {
+    id: 26,
+    title: "24-Hour Buildathon",
+    category: "Rapid Prototyping",
+    description: "Work together to turn an idea into a working prototype.",
+    fee: "Free",
+    format: "Hybrid",
+    deadline: sampleDeadline,
+    color: "yellow",
+  },
+];
 
-const workshopItems = Array.from({ length: 6 }, (_, i) =>
-  placeholder(`workshop-${i + 1}`, ["blue", "pink", "green", "purple", "yellow", "blue"][i])
-);
+const workshopItems = [
+  {
+    id: 31,
+    title: "Web Development Lab",
+    category: "",
+    description: "Build modern websites through hands-on practice.",
+    fee: "Free",
+    format: "In-person",
+    deadline: sampleDeadline,
+    color: "blue",
+  },
+  {
+    id: 32,
+    title: "Git & GitHub in Practice",
+    category: " ",
+    description: "Learn version control and collaborate on code.",
+    fee: "Free",
+    format: "Online",
+    deadline: sampleDeadline,
+    color: "pink",
+  },
+  {
+    id: 33,
+    title: "Explore AI & Gemini",
+    category: " ",
+    description: "Explore AI concepts and experiment with useful applications.",
+    fee: "Free",
+    format: "Hybrid",
+    deadline: sampleDeadline,
+    color: "green",
+  },
+    {
+    id: 34,
+    title: "React Fundamentals",
+    category: "",
+    description: "Build interactive interfaces with reusable React components.",
+    fee: "Free",
+    format: "Online",
+    deadline: sampleDeadline,
+    color: "purple",
+  },
+  {
+    id: 35,
+    title: "Cloud Computing Basics",
+    category: "",
+    description: "Explore cloud concepts, deployment, and Google Cloud services.",
+    fee: "Free",
+    format: "In-person",
+    deadline: sampleDeadline,
+    color: "green",
+  },
+  {
+    id: 36,
+    title: "API Development Lab",
+    category: "",
+    description: "Understand APIs and practise connecting frontend and backend applications.",
+    fee: "Free",
+    format: "Hybrid",
+    deadline: sampleDeadline,
+    color: "blue",
+  },
+];
 
-function getStatus(deadline, now) {
-  if (!deadline) return "unset";
+function getTimeLeft(deadline, now) {
+  const difference = new Date(deadline).getTime() - now;
 
-  const time = new Date(deadline).getTime();
+  if (difference <= 0) return null;
 
-  if (!Number.isFinite(time)) return "unset";
+  const days = Math.floor(difference / 86400000);
+  const hours = Math.floor((difference % 86400000) / 3600000);
+  const minutes = Math.floor((difference % 3600000) / 60000);
+  const seconds = Math.floor((difference % 60000) / 1000);
 
-  return now < time ? "open" : "closed";
+  return { days, hours, minutes, seconds };
 }
 
 function Deadline({ deadline, now }) {
-  const remaining = new Date(deadline).getTime() - now;
+  const timeLeft = getTimeLeft(deadline, now);
 
-  if (!Number.isFinite(remaining) || remaining <= 0) {
+  if (!timeLeft) {
     return <span className="deadline-value">Deadline passed</span>;
   }
 
-  const days = Math.floor(remaining / 86400000);
-  const hours = Math.floor((remaining % 86400000) / 3600000);
-  const minutes = Math.floor((remaining % 3600000) / 60000);
-  const seconds = Math.floor((remaining % 60000) / 1000);
-
   return (
-    <div className="deadline-countdown" aria-label="Time remaining">
-      {days > 0 && <span>{days}d </span>}
-      <span>{String(hours).padStart(2, "0")}h </span>
-      <span>{String(minutes).padStart(2, "0")}m </span>
-      <span>{String(seconds).padStart(2, "0")}s</span>
+    <div className="deadline-countdown" aria-label="Time remaining to register">
+      {timeLeft.days > 0 && <span>{timeLeft.days}d </span>}
+      <span>{String(timeLeft.hours).padStart(2, "0")}h </span>
+      <span>{String(timeLeft.minutes).padStart(2, "0")}m </span>
+      <span>{String(timeLeft.seconds).padStart(2, "0")}s</span>
     </div>
   );
 }
 
-function RegistrationButton({ item, status }) {
-  const hasLink = Boolean(item.registrationUrl);
-  const canRegister = status === "open" && hasLink;
-
-  let label = "-----";
-
-  if (status === "open") {
-    label = hasLink ? "Register Now ↗" : "Register Now · Demo";
-  } else if (status === "closed") {
-    label = "Registration Closed";
-  }
+function RegistrationButton({ item, now }) {
+  const isOpen = now < new Date(item.deadline).getTime();
 
   return (
     <button
-      className={`registration-button ${
-        status === "open"
-          ? "is-open"
-          : status === "closed"
-            ? "is-closed"
-            : ""
-      }`}
+      className={`registration-button ${isOpen ? "is-open" : "is-closed"}`}
       type="button"
-      disabled={status !== "open" || !hasLink}
+      disabled={!isOpen}
       onClick={() => {
-        if (canRegister) {
-          window.open(
-            item.registrationUrl,
-            "_blank",
-            "noopener,noreferrer"
+        if (isOpen) {
+          window.alert(
+            "The registration form for this event has not been connected yet."
           );
         }
       }}
-      title={
-        status === "open" && !hasLink
-          ? "Demo only. A real registration link has not been added."
-          : undefined
-      }
     >
-      {label}
+      {isOpen ? "Register Now ↗" : "Registration Closed"}
     </button>
   );
 }
 
 function EventCard({ item, now }) {
-  const status = getStatus(item.deadline, now);
-
-  const deadlineText =
-    status === "unset"
-      ? "-----"
-      : new Date(item.deadline).toLocaleString("en-IN", {
-          day: "numeric",
-          month: "short",
-          year: "numeric",
-          hour: "numeric",
-          minute: "2-digit",
-        });
+  const isOpen = now < new Date(item.deadline).getTime();
 
   return (
     <article className={`collection-card accent-${item.color}`}>
@@ -151,33 +253,18 @@ function EventCard({ item, now }) {
         <div className="art-orbit orbit-two" />
 
         <div className="art-core" aria-hidden="true">
-          ✳
+          {item.category === "Web Development" ? "</>" : "✳"}
         </div>
 
-        <span className="art-index">
-          {String(item.id.split("-").pop()).padStart(2, "0")}
-        </span>
-
+        <span className="art-index">{String(item.id).slice(-2)}</span>
         <span className="art-category">{item.category}</span>
       </div>
 
       <div className="collection-card-body">
         <div className="collection-card-meta">
-          <span
-            className={`event-status ${
-              status === "open"
-                ? "registration-open"
-                : status === "closed"
-                  ? "completed"
-                  : ""
-            }`}
-          >
-            {status !== "unset" && <span className="status-dot" />}
-            {status === "open"
-              ? "Registration Open"
-              : status === "closed"
-                ? "Registration Closed"
-                : "-----"}
+          <span className={`event-status ${isOpen ? "registration-open" : "completed"}`}>
+            <span className="status-dot" />
+            {isOpen ? "Registration Open" : "Registration Closed"}
           </span>
         </div>
 
@@ -197,18 +284,24 @@ function EventCard({ item, now }) {
 
         <div className="event-deadline">
           <span className="meta-caption">REGISTRATION DEADLINE</span>
-          <span className="deadline-value">{deadlineText}</span>
-
-          {status === "open" && (
-            <Deadline deadline={item.deadline} now={now} />
-          )}
+          <span className="deadline-value">
+            {new Date(item.deadline).toLocaleString("en-IN", {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+              hour: "numeric",
+              minute: "2-digit",
+            })}
+          </span>
+          {isOpen && <Deadline deadline={item.deadline} now={now} />}
         </div>
 
-        <RegistrationButton item={item} status={status} />
+        <RegistrationButton item={item} now={now} />
       </div>
     </article>
   );
 }
+
 
 function EventSection({ id, eyebrow, title, description, items, now }) {
   const scrollRef = useRef(null);
@@ -216,9 +309,9 @@ function EventSection({ id, eyebrow, title, description, items, now }) {
   const scrollCards = (direction) => {
     if (!scrollRef.current) return;
 
-    const card = scrollRef.current.querySelector(".collection-card");
-    const distance = card
-      ? card.getBoundingClientRect().width + 20
+    const firstCard = scrollRef.current.querySelector(".collection-card");
+    const distance = firstCard
+      ? firstCard.getBoundingClientRect().width + 20
       : 320;
 
     scrollRef.current.scrollBy({
@@ -245,6 +338,7 @@ function EventSection({ id, eyebrow, title, description, items, now }) {
           >
             &#8592;
           </button>
+
           <button
             type="button"
             className="carousel-arrow"
@@ -256,10 +350,7 @@ function EventSection({ id, eyebrow, title, description, items, now }) {
         </div>
       </div>
 
-      <div
-        className="event-card-grid event-card-carousel"
-        ref={scrollRef}
-      >
+      <div className="event-card-grid event-card-carousel" ref={scrollRef}>
         {items.map((item) => (
           <EventCard key={item.id} item={item} now={now} />
         ))}
@@ -267,6 +358,7 @@ function EventSection({ id, eyebrow, title, description, items, now }) {
     </section>
   );
 }
+
 
 export default function Events() {
   const [now, setNow] = useState(() => Date.now());
@@ -308,17 +400,12 @@ export default function Events() {
       <section className="events-shell featured-section">
         <div className="featured-heading">
           <div>
-            <span className="section-eyebrow">
-              DISCOVER · PARTICIPATE · BUILD
-            </span>
-            <h2>
-              Featured <span>opportunities.</span>
-            </h2>
+            <span className="section-eyebrow">DISCOVER · PARTICIPATE · BUILD</span>
+            <h2>Featured <span>opportunities.</span></h2>
             <p>
               Find ways to connect, learn, and build with the GDGoC TKIET community.
             </p>
           </div>
-
           <span className="featured-side-note">
             <span className="live-indicator" />
             YOUR NEXT EXPERIENCE STARTS HERE
@@ -360,7 +447,7 @@ export default function Events() {
           id="chapter-events"
           eyebrow="01 / CONNECT"
           title="Events"
-          description="Explore chapter events and community activities."
+          description="Meet developers, exchange ideas, and connect with the community."
           items={eventItems}
           now={now}
         />
@@ -369,7 +456,7 @@ export default function Events() {
           id="hackathons"
           eyebrow="02 / BUILD"
           title="Hackathons"
-          description="Discover upcoming challenges and build opportunities."
+          description="Collaborate, solve problems, and turn ideas into prototypes."
           items={hackathonItems}
           now={now}
         />
@@ -378,7 +465,7 @@ export default function Events() {
           id="workshops"
           eyebrow="03 / LEARN"
           title="Workshops"
-          description="Explore hands-on learning and technical sessions."
+          description="Build practical skills with developer tools and technologies."
           items={workshopItems}
           now={now}
         />
